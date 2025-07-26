@@ -8,10 +8,10 @@ let tasks: Task[] = []
 */
 export const getTasks = (req: Request, res: Response) => {
     try {
-        res.status(200).json(tasks)
         if (tasks.length === 0) {
             res.status(200).json({ message: 'No hay tareas' })
         }
+        res.status(200).json(tasks)
     } catch (error) {
         res.status(500).json({ message: 'Error al obtener las tareas' })
     }
