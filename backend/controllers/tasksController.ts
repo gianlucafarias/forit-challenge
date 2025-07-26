@@ -7,7 +7,14 @@ let tasks: Task[] = []
     getTasks: Obtiene todas las tareas
 */
 export const getTasks = (req: Request, res: Response) => {
-    res.send(tasks)
+    try {
+        res.status(200).json(tasks)
+        if (tasks.length === 0) {
+            res.status(200).json({ message: 'No hay tareas' })
+        }
+    } catch (error) {
+        res.status(500).json({ message: 'Error al obtener las tareas' })
+    }
 }
 
 /*
